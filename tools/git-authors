@@ -1,0 +1,31 @@
+# This file is managed by sprout
+
+authors:
+  jt: Johannes Tuchscherer; jtuchscherer
+  wf: Warren Fernandes; wfernandes
+  ap: Andrew Poydence; apoydence
+  rk: Rohit Kumar; rokumar
+  mr: Maya Rosecrance; mrosecrance
+  kc: Kira Combs; kcombs
+  ds: Dwayne Schultz; dschultz
+  sn: Sam Nelson; nelsam
+  bw: Barry Williams; bwilliams
+  tc: Tom Chen; tochen
+  bl: Brady Love; blove
+  wj: Wesley Jeanette; wjeanette
+  rs: Robert Sullivan; rsullivan
+  jk: Jason Keene; jkeene
+email:
+  domain: pivotal.io
+email_addresses:
+  dp: dprotaso@gmail.com
+  js: jvshahid@gmail.com
+  cb: chanthing@gmail.com
+  tbt: tyler.tift@gmail.com
+  sn: snelson@pivotal.io
+  is: ihcsim@gmail.com
+  nk: nino.khodabandeh@hpe.com
+  mf: fraenkel@us.ibm.com
+
+global: true
+
