@@ -13,6 +13,8 @@ SCM_THEME_TAG_PREFIX='tag:'
 SCM_THEME_DETACHED_PREFIX='detached:'
 SCM_THEME_BRANCH_TRACK_PREFIX=' → '
 SCM_THEME_BRANCH_GONE_PREFIX=' ⇢ '
+SCM_THEME_CURRENT_USER_PREFFIX=' ☺︎ '
+SCM_THEME_CURRENT_USER_SUFFIX=''
 
 CLOCK_CHAR='☆'
 THEME_CLOCK_CHECK=${THEME_CLOCK_CHECK:=true}
@@ -21,6 +23,7 @@ THEME_BATTERY_PERCENTAGE_CHECK=${THEME_BATTERY_PERCENTAGE_CHECK:=true}
 SCM_GIT_SHOW_DETAILS=${SCM_GIT_SHOW_DETAILS:=true}
 SCM_GIT_SHOW_REMOTE_INFO=${SCM_GIT_SHOW_REMOTE_INFO:=auto}
 SCM_GIT_IGNORE_UNTRACKED=${SCM_GIT_IGNORE_UNTRACKED:=false}
+SCM_GIT_SHOW_CURRENT_USER=${SCM_GIT_SHOW_CURRENT_USER:=false}
 
 SCM_GIT='git'
 SCM_GIT_CHAR='±'
@@ -92,19 +95,50 @@ function scm_prompt_info {
   [[ $SCM == $SCM_SVN ]] && svn_prompt_info && return
 }
 
+function git_status_summary {
+  awk '
+  BEGIN {
+    untracked=0;
+    unstaged=0;
+    staged=0;
+  }
+  {
+    if (!after_first && $0 ~ /^##.+/) {
+      print $0
+      seen_header = 1
+    } else if ($0 ~ /^\?\? .+/) {
+      untracked += 1
+    } else {
+      if ($0 ~ /^.[^ ] .+/) {
+        unstaged += 1
+      }
+      if ($0 ~ /^[^ ]. .+/) {
+        staged += 1
+      }
+    }
+    after_first = 1
+  }
+  END {
+    if (!seen_header) {
+      print
+    }
+    print untracked "\t" unstaged "\t" staged
+  }'
+}
+
 function git_prompt_vars {
   local details=''
   SCM_STATE=${GIT_THEME_PROMPT_CLEAN:-$SCM_THEME_PROMPT_CLEAN}
   if [[ "$(git config --get bash-it.hide-status)" != "1" ]]; then
     [[ "${SCM_GIT_IGNORE_UNTRACKED}" = "true" ]] && local git_status_flags='-uno'
-    local status="$(git status -b --porcelain ${git_status_flags} 2> /dev/null ||
-		            git status --porcelain ${git_status_flags} 2> /dev/null)"
-    if [[ -n "${status}" ]] && [[ "${status}" != "\n" ]] && [[ -n "$(grep -v ^# <<< "${status}")" ]]; then
+    local status_lines=$((git status --porcelain ${git_status_flags} -b 2> /dev/null ||
+                          git status --porcelain ${git_status_flags}    2> /dev/null) | git_status_summary)
+    local status=$(awk 'NR==1' <<< "$status_lines")
+    local counts=$(awk 'NR==2' <<< "$status_lines")
+    IFS=$'\t' read untracked_count unstaged_count staged_count <<< "$counts"
+    if [[ "${untracked_count}" -gt 0 || "${unstaged_count}" -gt 0 || "${staged_count}" -gt 0 ]]; then
       SCM_DIRTY=1
       if [[ "${SCM_GIT_SHOW_DETAILS}" = "true" ]]; then
-        local untracked_count="$(egrep -c '^\?\? .+' <<< "${status}")"
-        local unstaged_count="$(egrep -c '^.[^ ?#] .+' <<< "${status}")"
-        local staged_count="$(egrep -c '^[^ ?#]. .+' <<< "${status}")"
         [[ "${staged_count}" -gt 0 ]] && details+=" ${SCM_GIT_STAGED_CHAR}${staged_count}" && SCM_DIRTY=3
         [[ "${unstaged_count}" -gt 0 ]] && details+=" ${SCM_GIT_UNSTAGED_CHAR}${unstaged_count}" && SCM_DIRTY=2
         [[ "${untracked_count}" -gt 0 ]] && details+=" ${SCM_GIT_UNTRACKED_CHAR}${untracked_count}" && SCM_DIRTY=1
@@ -112,6 +146,8 @@ function git_prompt_vars {
       SCM_STATE=${GIT_THEME_PROMPT_DIRTY:-$SCM_THEME_PROMPT_DIRTY}
     fi
   fi
+
+  [[ "${SCM_GIT_SHOW_CURRENT_USER}" == "true" ]] && details+="$(git_user_info)"
 
   SCM_CHANGE=$(git rev-parse --short HEAD 2>/dev/null)
 
@@ -237,8 +273,8 @@ function hg_prompt_vars {
 
 function rvm_version_prompt {
   if which rvm &> /dev/null; then
-    rvm=$(rvm tools identifier) || return
-    if [ $rvm != "system" ]; then
+    rvm=$(rvm-prompt) || return
+    if [ -n "$rvm" ]; then
       echo -e "$RVM_THEME_PROMPT_PREFIX$rvm$RVM_THEME_PROMPT_SUFFIX"
     fi
   fi
@@ -301,6 +337,13 @@ function python_version_prompt {
   echo -e "$(virtualenv_prompt)$(condaenv_prompt)$(py_interp_prompt)"
 }
 
+function git_user_info {
+  # support two or more initials, set by 'git pair' plugin
+  SCM_CURRENT_USER=$(git config user.initials | sed 's% %+%')
+  # if `user.initials` weren't set, attempt to extract initials from `user.name`
+  [[ -z "${SCM_CURRENT_USER}" ]] && SCM_CURRENT_USER=$(printf "%s" $(for word in $(git config user.name | tr 'A-Z' 'a-z'); do printf "%1.1s" $word; done))
+  [[ -n "${SCM_CURRENT_USER}" ]] && printf "%s" "$SCM_THEME_CURRENT_USER_PREFFIX$SCM_CURRENT_USER$SCM_THEME_CURRENT_USER_SUFFIX"
+}
 
 # backwards-compatibility
 function git_prompt_info {
