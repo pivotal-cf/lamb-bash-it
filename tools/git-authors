@@ -1,21 +1,27 @@
 # This file is managed by sprout
 
 authors:
-  jt: Johannes Tuchscherer; jtuchscherer
-  wf: Warren Fernandes; wfernandes
   ap: Andrew Poydence; apoydence
-  mr: Maya Rosecrance; mrosecrance
-  kc: Kira Combs; kcombs
-  sn: Sam Nelson; nelsam
-  tc: Tom Chen; tochen
   bl: Brady Love; blove
-  wj: Wesley Jeanette; wjeanette
-  rs: Robert Sullivan; rsullivan
+  bw: Barry Williams; bwilliams
+  ch: Charles Hansen; chansen
+  ds: Dwayne Schultz; dschultz
   jk: Jason Keene; jkeene
-  tp: Travis Patterson; tpatterson
-  rd: Ryan Dy; rdy
+  jt: Johannes Tuchscherer; jtuchscherer
   jta: JT Archie; jarchie
-  jdk: Jean de Klerk; jadekler
+  kc: Kira Combs; kcombs
+  mr: Maya Rosecrance; mrosecrance
+  rd: Ryan Dy; rdy
+  rk: Rohit Kumar; rokumar
+  rs: Robert Sullivan; rsullivan
+  sn: Sam Nelson; nelsam
+  sw: Samuel Waggoner; swaggoner
+  tc: Tom Chen; tochen
+  tl: Travis Longoria; tlongoria
+  tp: Travis Patterson; tpatterson
+  wf: Warren Fernandes; wfernandes
+  wj: Wesley Jeanette; wjeanette
+  jdk: Jean de Klerk; jadekler 
 email:
   domain: pivotal.io
 email_addresses:
