@@ -3,25 +3,22 @@
 authors:
   ap: Andrew Poydence; apoydence
   bl: Brady Love; blove
-  bw: Barry Williams; bwilliams
   ch: Charles Hansen; chansen
-  ds: Dwayne Schultz; dschultz
   jk: Jason Keene; jkeene
   jt: Johannes Tuchscherer; jtuchscherer
   jta: JT Archie; jarchie
   kc: Kira Combs; kcombs
+  me: Max Eshleman; meshleman
   mr: Maya Rosecrance; mrosecrance
   rd: Ryan Dy; rdy
-  rk: Rohit Kumar; rokumar
   rs: Robert Sullivan; rsullivan
   sn: Sam Nelson; nelsam
   sw: Samuel Waggoner; swaggoner
   tc: Tom Chen; tochen
-  tl: Travis Longoria; tlongoria
   tp: Travis Patterson; tpatterson
   wf: Warren Fernandes; wfernandes
   wj: Wesley Jeanette; wjeanette
-  jdk: Jean de Klerk; jadekler 
+  jdk: Jean de Klerk; jadekler
 email:
   domain: pivotal.io
 email_addresses:
@@ -35,6 +32,7 @@ email_addresses:
   nk: nino.khodabandeh@hpe.com
   mf: fraenkel@us.ibm.com
   jdk: jadekler@gmail.com
+  me: meshleman@pivotal.io
 
 global: true
 
