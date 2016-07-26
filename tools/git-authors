@@ -19,6 +19,8 @@ authors:
   wf: Warren Fernandes; wfernandes
   wj: Wesley Jeanette; wjeanette
   jdk: Jean de Klerk; jadekler
+  pe: Patrick Edgett; pedgett
+  js: Johanna Smith; josmith
 email:
   domain: pivotal.io
 email_addresses:
@@ -33,6 +35,7 @@ email_addresses:
   mf: fraenkel@us.ibm.com
   jdk: jadekler@gmail.com
   me: meshleman@pivotal.io
+  js: josmith@pivotal.io
 
 global: true
 
