@@ -7,7 +7,7 @@ authors:
   jk: Jason Keene; jkeene
   jt: Johannes Tuchscherer; jtuchscherer
   jta: JT Archie; jarchie
-  kc: Kira Combs; kcombs
+  kb: Kira Boyle; kboyle
   me: Max Eshleman; meshleman
   mr: Maya Rosecrance; mrosecrance
   rd: Ryan Dy; rdy
@@ -22,6 +22,7 @@ authors:
   pe: Patrick Edgett; pedgett
   js: Johanna Smith; josmith
   jr: Joseph Rodriguez; jrodriguez
+  jb: Jeanette Booher
 email:
   domain: pivotal.io
 email_addresses:
