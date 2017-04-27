@@ -12,14 +12,12 @@ authors:
   mr: Maya Rosecrance; mrosecrance
   rd: Ryan Dy; rdy
   rs: Robert Sullivan; rsullivan
-  sn: Sam Nelson; nelsam
   sw: Samuel Waggoner; swaggoner
   tc: Tom Chen; tochen
   tp: Travis Patterson; tpatterson
   wf: Warren Fernandes; wfernandes
   wj: Wesley Jeanette; wjeanette
-  jdk: Jean de Klerk; jadekler
-  pe: Patrick Edgett; pedgett
+  ge: Greg Eng; geng
   js: Johanna Smith; josmith
   jr: Joseph Rodriguez; jrodriguez
   jb: Jeanette Booher; jbooher-lasell
@@ -31,11 +29,9 @@ email_addresses:
   js: jvshahid@gmail.com
   cb: chanthing@gmail.com
   tbt: tyler.tift@gmail.com
-  sn: snelson@pivotal.io
   is: ihcsim@gmail.com
   nk: nino.khodabandeh@hpe.com
   mf: fraenkel@us.ibm.com
-  jdk: jadekler@gmail.com
   me: meshleman@pivotal.io
   js: josmith@pivotal.io
 
