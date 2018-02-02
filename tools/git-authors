@@ -14,7 +14,6 @@ authors:
   rs: Robert Sullivan; rsullivan
   sw: Samuel Waggoner; swaggoner
   tc: Tom Chen; tochen
-  tp: Travis Patterson; tpatterson
   wf: Warren Fernandes; wfernandes
   wj: Wesley Jeanette; wjeanette
   rh: Rob Hill; rhill
@@ -25,6 +24,7 @@ authors:
   dc: Dennis Collinson; dcollinson
   go: Glenn Oppegard; goppegard
   tw: Trevor Whitney; twhitney
+  tp: Todd Persen; tpersen
 email:
   domain: pivotal.io
 email_addresses:
