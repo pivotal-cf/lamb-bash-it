@@ -6,4 +6,3 @@ alias bosh-dev-ssh="bosh ssh --gw-user jumpbox --gw-host 35.196.93.221 --gw-priv
 
 alias bosh-acceptance="pushd ~/workspace/deployments-metrics/bosh-deployments/gcp/healthwatch/ > /dev/null; /usr/local/bin/bbl print-env; popd > /dev/null"
 alias bosh-acceptance-ssh="bosh ssh --gw-user jumpbox --gw-host 35.196.76.134 --gw-private-key ~/workspace/deployments-metrics/bosh-deployments/gcp/healthwatch/director_cert"
-                                                                                                                                        s
