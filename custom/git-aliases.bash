@@ -1,4 +1,5 @@
 export GIT_DUET_GLOBAL=true
+export GIT_DUET_ROTATE_AUTHOR=1
 
 alias duet='git duet --global'
 alias solo='git solo --global'
