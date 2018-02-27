@@ -9,10 +9,11 @@ function _load_ssh_key_from_lastpass() {
   fi
 
   tmpdir=$(mktemp -d -t lpass)
-  export LPASS_HOME=$tmpdir
-  export LPASS_AGENT_DISABLE=1
+#  export LPASS_HOME=$tmpdir
+#  export LPASS_AGENT_DISABLE=1
 
-  trap 'lpass logout --force; rm -rf "${tmpdir}"' EXIT INT TERM HUP
+#  trap 'lpass logout --force; rm -rf "${tmpdir}"' EXIT INT TERM HUP
+  trap 'rm -rf "${tmpdir}"' EXIT INT TERM HUP
 
   private_key_name="${keytype}_${username}"
   private_key_path="${tmpdir}/${private_key_name}"
@@ -22,14 +23,14 @@ function _load_ssh_key_from_lastpass() {
   fi
 
   mkfifo -m 0600 "${private_key_path}"
-  lpass login "${username}+lastpass-cf@pivotal.io"
+#  lpass login "${username}+lastpass-cf@pivotal.io"
   lpass show --notes ${username}_${keytype} > "${private_key_path}" &
   ssh-add -t "${lifetime}" "${private_key_path}"
 
   # Clean up
   rm -rf "${tmpdir}"
-  unset LPASS_HOME
-  unset LPASS_AGENT_DISABLE
+#  unset LPASS_HOME
+#  unset LPASS_AGENT_DISABLE
   trap - EXIT INT TERM HUP
 }
 alias nonprod='_load_ssh_key_from_lastpass nonprod'
