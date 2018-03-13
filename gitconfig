@@ -1,0 +1,53 @@
+[core]
+    excludesfile = /Users/pivotal/.gitignore_global
+    pager = less -FXRS -x2
+[alias]
+    st = status
+    di = diff
+    co = checkout
+    ci = duet-commit
+    br = branch
+    sta = stash
+    cane = commit --amend --no-edit
+    llog = log --date=local
+    flog = log --pretty=fuller --decorate
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lol = log --graph --decorate --oneline
+    lola = log --graph --decorate --oneline --all
+    blog = log origin/master... --left-right
+    ds = diff --staged
+    fixup = commit --fixup
+    squash = commit --squash
+    unstage = reset HEAD
+    rum = rebase master@{u}
+    sur = submodule update --init --recursive
+[apply]
+    whitespace = nowarn
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+    ui = auto
+[branch]
+    autosetupmerge = true
+    autosetuprebase = always
+[rebase]
+    autosquash = true
+[push]
+    default = simple
+[url "git@github.com:"]
+    pushInsteadOf = https://github.com/
+[pull]
+    rebase = true
+[aliases]
+    sur = submodule update --init --recursive
+[init]
+    templatedir = /usr/local/share/githooks-templatedir
+[secrets]
+    providers = git secrets --aws-provider
+    patterns = [A-Z0-9]{20}
+    patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
+    patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
+    allowed = AKIAIOSFODNN7EXAMPLE
+    allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
