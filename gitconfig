@@ -35,7 +35,7 @@
 [rebase]
     autosquash = true
 [push]
-    default = simple
+    default = current
 [url "git@github.com:"]
     pushInsteadOf = https://github.com/
 [pull]
