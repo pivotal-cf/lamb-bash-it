@@ -4,3 +4,4 @@ alias healthwatch-data="cd ~/workspace/go/src/github.com/pivotal-cf/healthwatch-
 alias release-data="cd ~/workspace/healthwatch-release/src/github.com/pivotal-cf/healthwatch-data"
 alias release="cd ~/workspace/healthwatch-release"
 alias tile="cd ~/workspace/p-healthwatch"
+alias superfly="fly -t superpipe"
