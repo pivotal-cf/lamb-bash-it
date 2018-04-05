@@ -40,6 +40,7 @@ function pcf-target-ssh()
     bosh_creds=$(om  -k -t ${om_url} -u ${om_username} -p ${om_password} curl -s --path /api/v0/deployed/director/credentials/bosh_commandline_credentials | jq .credential -r)
     echo "============================"
     echo ${bosh_creds}
+    echo -n ${bosh_creds} | pbcopy
     echo "============================"
 
     domain=pcf.$1.cf-app.com;
